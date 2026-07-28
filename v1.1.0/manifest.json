@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "project": "ESP_WIFI_MQTT",
+  "target": "esp32",
+  "version": "1.1.0",
+  "build_id": "release-1.1.0",
+  "channel": "stable",
+  "app_size": 1256464,
+  "sha256": "911d92c5ecc440f708f055ced0180a270c8d827e45fd50554a65450c0f32402e",
+  "app_url": "https://github.com/VISOL-TechTeam/WIFI_ESP_Module_Release/releases/download/v1.1.0/ESP_WIFI_MQTT-v1.1.0-app.bin",
+  "min_updater": "1.0.0",
+  "created_at": "2026-07-28T01:56:31Z",
+  "signature": "3045022100ec4300afea3d6d3c8c24e29e3b5a88ce95d1c132d035b7f5f3e55c8b12c4e74e02204658594d7a440ea09487c4d00af0347eecd7c2a9c2d52f7f10c2164a5cc4337e"
+}
