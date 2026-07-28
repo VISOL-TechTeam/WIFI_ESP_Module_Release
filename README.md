@@ -6,6 +6,7 @@ VISOL ESP32 WiFi/MQTT 모듈 펌웨어 배포 저장소입니다.
 
 | 버전 | 경로 | 비고 |
 |------|------|------|
+| v1.2.1 | [v1.2.1/](v1.2.1/) | STA IP 웹 로그인 method 수정 + SoftAP/STA·OTA 안정화 |
 | v1.1.0 | [v1.1.0/](v1.1.0/) | dual OTA 파티션 + USB-UART0 런타임 OTA |
 
 ## 파일 설명
@@ -22,11 +23,11 @@ VISOL ESP32 WiFi/MQTT 모듈 펌웨어 배포 저장소입니다.
 ## 최초 설치
 
 ```bash
-esptool.py -p COMx -b 460800 write_flash 0x0 v1.1.0/ESP_WIFI_MQTT-v1.1.0-factory.bin
+esptool.py -p COMx -b 460800 write_flash 0x0 v1.2.1/ESP_WIFI_MQTT-v1.2.1-factory.bin
 ```
 
 ## 런타임 업데이트 (V1.1+ 이후)
 
 ```bash
-python visol_fw_updater.py --file v1.1.0/manifest.json --firmware v1.1.0/ESP_WIFI_MQTT-v1.1.0-app.bin --port COMx
+python visol_fw_updater.py --file v1.2.1/manifest.json --firmware v1.2.1/ESP_WIFI_MQTT-v1.2.1-app.bin --port COMx
 ```
