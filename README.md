@@ -33,3 +33,5 @@ esptool.py -p COMx -b 460800 write_flash 0x0 v1.1.1/ESP_WIFI_MQTT-v1.1.1-factory
 ```bash
 python visol_fw_updater.py --file v1.1.1/manifest.json --firmware v1.1.1/ESP_WIFI_MQTT-v1.1.1-app.bin --port COMx
 ```
+
+장치 설정 페이지 GitHub OTA는 이 저장소의 `vX.Y.Z/` 폴더(및 GitHub Releases asset)에서 최신 manifest를 조회합니다.
