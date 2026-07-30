@@ -6,6 +6,7 @@ VISOL ESP32 WiFi/MQTT 모듈 공개 릴리즈 저장소입니다.
 
 | 버전 | 경로 | 요약 |
 |------|------|------|
+| v1.2.1 | [v1.2.1/](v1.2.1/) | SoftAP 포털 로고 PNG/즉시편집, Main AP MQTT Test 후 상주 연결 |
 | v1.2.0 | [v1.2.0/](v1.2.0/) | 탭 설정 UI, Main AP SoftAP LAN/MQTT, STA SoftAP 제한, About 정리, OTA_STATE 호스트 핸드오프 |
 | v1.1.1 | [v1.1.1/](v1.1.1/) | GitHub OTA 최신버전 탐지 수정, OTA_STATE 호스트 핸드오프 |
 | v1.1.0 | [v1.1.0/](v1.1.0/) | WiFi AP 스캔/연결 테스트, UART1 전용 호스트 링크 |
@@ -26,13 +27,13 @@ VISOL ESP32 WiFi/MQTT 모듈 공개 릴리즈 저장소입니다.
 ## 공장 설치
 
 ```bash
-esptool.py -p COMx -b 460800 write_flash 0x0 v1.2.0/ESP_WIFI_MQTT-v1.2.0-factory.bin
+esptool.py -p COMx -b 460800 write_flash 0x0 v1.2.1/ESP_WIFI_MQTT-v1.2.1-factory.bin
 ```
 
 ## 런타임 업데이트
 
 ```bash
-python visol_fw_updater.py --file v1.2.0/manifest.json --firmware v1.2.0/ESP_WIFI_MQTT-v1.2.0-app.bin --port COMx
+python visol_fw_updater.py --file v1.2.1/manifest.json --firmware v1.2.1/ESP_WIFI_MQTT-v1.2.1-app.bin --port COMx
 ```
 
 장치 설정 포털의 GitHub OTA는 이 저장소의 `vX.Y.Z/` 경로(또는 GitHub Releases asset)에서 최신 manifest를 조회합니다.
