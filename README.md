@@ -6,6 +6,7 @@ VISOL ESP32 WiFi/MQTT 모듈 공개 릴리스 저장소입니다.
 
 | 버전 | 경로 | 요약 |
 |------|------|------|
+| v1.2.8 | [v1.2.8/](v1.2.8/) | MainAP SoftAP `192.168.100.x`, 폴더 기반 GitHub OTA, SoftAP 전용 비밀번호 확인 |
 | v1.2.7 | [v1.2.7/](v1.2.7/) | SoftAP MainAP `192.168.1.x` / portal `192.168.2.x`, GitHub OTA TLS 힙 확보 |
 | v1.2.6 | [v1.2.6/](v1.2.6/) | POWRAY UI 정리, A9/MQTT drop 수정, 비밀번호 UX |
 | v1.2.5 | [v1.2.5/](v1.2.5/) | SoftAP HTTPS 안정화, POWRAY TEST UI |
@@ -30,24 +31,24 @@ VISOL ESP32 WiFi/MQTT 모듈 공개 릴리스 저장소입니다.
 | `SHA256SUMS.txt` | 무결성 검증 |
 | `Tools/Visol_WIFI_Module_FW_Uploader.exe` | PC용 factory/OTA GUI 업로더 |
 
-## SoftAP IP (v1.2.7+)
+## SoftAP IP (v1.2.8+)
 
 | 모드 | SoftAP IP |
 |------|-----------|
-| Main AP | `http://192.168.1.1` |
+| Main AP | `http://192.168.100.1` (MQTT 예: `mqtt://192.168.100.100`) |
 | 일반 SoftAP / 설정 포털 | `http://192.168.2.1` |
 | APSTA 충돌 회피 | `http://192.168.3.1` (STA가 SoftAP와 같은 /24일 때) |
 
 ## 공장 설치
 
 ```bash
-esptool.py -p COMx -b 460800 write_flash 0x0 v1.2.7/ESP_WIFI_MQTT-v1.2.7-factory.bin
+esptool.py -p COMx -b 460800 write_flash 0x0 v1.2.8/ESP_WIFI_MQTT-v1.2.8-factory.bin
 ```
 
 ## 시리얼 업데이트
 
 ```bash
-python visol_fw_updater.py --file v1.2.7/manifest.json --firmware v1.2.7/ESP_WIFI_MQTT-v1.2.7-app.bin --port COMx
+python visol_fw_updater.py --file v1.2.8/manifest.json --firmware v1.2.8/ESP_WIFI_MQTT-v1.2.8-app.bin --port COMx
 ```
 
-장치 설정 포털의 GitHub OTA는 이 저장소의 `vX.Y.Z/` 경로(또는 GitHub Releases asset)에서 최신 manifest를 조회합니다.
+장치 설정 포털의 GitHub OTA는 이 저장소 **main** 브랜치의 `vX.Y.Z/` 폴더를 나열해 최고 semver를 고른 뒤 raw manifest/app.bin을 받습니다 (Release 태그·`/releases/latest` 미사용).
