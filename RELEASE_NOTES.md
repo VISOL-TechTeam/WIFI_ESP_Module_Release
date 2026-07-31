@@ -1,5 +1,8 @@
 ﻿> 제품은 POWRAY와 연동합니다. 권장 POWRAY FW: **≥ 1.4.6**. SoftAP 포털·플래시 안내는 [README.md](README.md).
 
+## Tools
+- Refresh `Tools/Visol_WIFI_Module_FW_Uploader.exe` from firmware repo `tools/gui_updater` (latest GUI build)
+
 ## v1.2.9
 - Fix critical `uart1_j1_rx` stack overflow on POWRAY TEST status (0xA9) when MQTT + SoftAP HTTPS are active
 - Move UART RX large buffers / MQTT pub scratch / protocol parse+TX buffers off the RX task stack (BSS)

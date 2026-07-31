@@ -47,7 +47,7 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 | `ESP_WIFI_MQTT-v*-factory.bin` | 최초/공장 설치 (`esptool` offset `0x0`) |
 | `ESP_WIFI_MQTT-v*-app.bin` | OTA / UART / 포털 수동 업로드 |
 | `manifest.json` (+ `manifest.sig`) | 서명된 OTA 메타데이터 |
-| `Tools/Visol_WIFI_Module_FW_Uploader.exe` | PC GUI 업로더 |
+| `Tools/Visol_WIFI_Module_FW_Uploader.exe` | PC GUI 업로더 (최신 GUI 빌드) |
 
 장치 포털 **FW → Check Latest / Install Latest** 도 같은 `vX.Y.Z/` 폴더에서 최고 semver를 고릅니다. STA + 인터넷 필요.
 
@@ -55,6 +55,7 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 | 버전 | 경로 | 요약 |
 |------|------|------|
+| v1.2.9 | [v1.2.9/](v1.2.9/) | UART RX 스택 오버플로 수정 (POWRAY A9 + MQTT/HTTPS) |
 | v1.2.8 | [v1.2.8/](v1.2.8/) | MainAP SoftAP `192.168.100.x`, 폴더 기반 GitHub OTA + 인터넷 게이트 |
 | v1.2.7 | [v1.2.7/](v1.2.7/) | SoftAP MainAP `192.168.1.x` / portal `192.168.2.x`, OTA TLS 힙 확보 |
 | v1.2.6 | [v1.2.6/](v1.2.6/) | POWRAY UI 정리, A9/MQTT drop 수정 |
@@ -74,10 +75,10 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 ```bash
 # 공장 설치 (병합 이미지)
-esptool.py -p COMx -b 460800 write_flash 0x0 v1.2.8/ESP_WIFI_MQTT-v1.2.8-factory.bin
+esptool.py -p COMx -b 460800 write_flash 0x0 v1.2.9/ESP_WIFI_MQTT-v1.2.9-factory.bin
 
 # UART OTA (이미 dual-OTA 파티션인 경우)
-python visol_fw_updater.py --file v1.2.8/manifest.json --firmware v1.2.8/ESP_WIFI_MQTT-v1.2.8-app.bin --port COMx
+python visol_fw_updater.py --file v1.2.9/manifest.json --firmware v1.2.9/ESP_WIFI_MQTT-v1.2.9-app.bin --port COMx
 ```
 
-또는 `Tools/Visol_WIFI_Module_FW_Uploader.exe` 사용.
+또는 `Tools/Visol_WIFI_Module_FW_Uploader.exe` 사용 (GUI · 폴더 기반 GitHub OTA / 로컬 manifest).
