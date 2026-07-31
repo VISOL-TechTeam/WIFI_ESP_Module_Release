@@ -1,4 +1,6 @@
-﻿## v1.2.3
+﻿## v1.2.4
+- SoftAP POWRAY TEST tab (MQTT CONT_ALL/CMD/A9/diagnostics)
+## v1.2.3
 - SoftAP HTTPS :443, APSTA IP conflict fix, MainAP ARP L2 forward, continuous reconnect
 
 ## v1.2.2
@@ -27,3 +29,4 @@
 
 - SoftAP 포털 로고 PNG 표시 수정 및 SoftAP 설정 즉시편집
 - Main AP MQTT Test 성공 후 상주 연결 유지
+
