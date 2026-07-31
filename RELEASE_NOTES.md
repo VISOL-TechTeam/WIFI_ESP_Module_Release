@@ -3,6 +3,11 @@
 ## Tools
 - Refresh `Tools/Visol_WIFI_Module_FW_Uploader.exe` from firmware repo `tools/gui_updater` (latest GUI build)
 
+## v1.2.12
+- SoftAP config portal: split tabs into pages (/config /softap /sta /mqtt /powray /fw /about)
+- Shared /static CSS/JS; CFG page BSS 64KB→20KB (~44KB saved)
+- Keep Edit/lock, APIs, auth, /logo.png; captive portal → /
+
 ## v1.2.10
 - POWRAY A9 status: ID/GroupID (frame Group[2]+ID[2]); current Current1..3 deci-amps (e.g. 418 → 41.8A)
 - ALIVE / RSSI / IP results shown inline under diagnosis buttons
