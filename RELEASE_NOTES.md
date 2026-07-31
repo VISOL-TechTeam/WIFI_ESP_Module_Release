@@ -1,4 +1,6 @@
-﻿## v1.2.8
+﻿> 제품은 POWRAY와 연동합니다. 권장 POWRAY FW: **≥ 1.4.6**. SoftAP 포털·플래시 안내는 [README.md](README.md).
+
+## v1.2.8
 - SoftAP LAN: MainAP `192.168.100.1/24`, config portal SoftAP `192.168.2.1/24`
 - MQTT MainAP broker example: `mqtt://192.168.100.100`
 - APSTA conflict: if STA owns SoftAP /24, portal moves to `192.168.3.1` (alt; not 100.x)
