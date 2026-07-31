@@ -6,7 +6,7 @@ VISOL ESP32 WiFi/MQTT 紐⑤뱢 怨듦컻 由대━利???μ냼?낅땲??
 
 | 踰꾩쟾 | 寃쎈줈 | ?붿빟 |
 |------|------|------|
-| v1.2.3 | [v1.2.5/](v1.2.5/) | APSTA SoftAP/STA IP 異⑸룎 ?섏젙, MainAP ARP L2 forward, ?곗냽 ?ъ젒??retry UI ?쒓굅) |
+| v1.2.3 | [v1.2.6/](v1.2.6/) | APSTA SoftAP/STA IP 異⑸룎 ?섏젙, MainAP ARP L2 forward, ?곗냽 ?ъ젒??retry UI ?쒓굅) |
 | v1.2.2 | [v1.2.2/](v1.2.2/) | SoftAP STA?봖TA L2 forward (MainAP LAN PC 釉뚮줈而? |
 | v1.2.1 | [v1.2.1/](v1.2.1/) | SoftAP ?ы꽭 濡쒓퀬 PNG/利됱떆?몄쭛, Main AP MQTT Test ???곸＜ ?곌껐 |
 | v1.2.0 | [v1.2.0/](v1.2.0/) | ???ㅼ젙 UI, Main AP SoftAP LAN/MQTT, STA SoftAP ?쒗븳, About ?뺣━, OTA_STATE ?몄뒪???몃뱶?ㅽ봽 |
@@ -29,13 +29,13 @@ VISOL ESP32 WiFi/MQTT 紐⑤뱢 怨듦컻 由대━利???μ냼?낅땲??
 ## 怨듭옣 ?ㅼ튂
 
 ```bash
-esptool.py -p COMx -b 460800 write_flash 0x0 v1.2.5/ESP_WIFI_MQTT-v1.2.3-factory.bin
+esptool.py -p COMx -b 460800 write_flash 0x0 v1.2.6/ESP_WIFI_MQTT-v1.2.3-factory.bin
 ```
 
 ## ?고????낅뜲?댄듃
 
 ```bash
-python visol_fw_updater.py --file v1.2.5/manifest.json --firmware v1.2.5/ESP_WIFI_MQTT-v1.2.3-app.bin --port COMx
+python visol_fw_updater.py --file v1.2.6/manifest.json --firmware v1.2.6/ESP_WIFI_MQTT-v1.2.3-app.bin --port COMx
 ```
 
 ?μ튂 ?ㅼ젙 ?ы꽭??GitHub OTA??????μ냼??`vX.Y.Z/` 寃쎈줈(?먮뒗 GitHub Releases asset)?먯꽌 理쒖떊 manifest瑜?議고쉶?⑸땲??
