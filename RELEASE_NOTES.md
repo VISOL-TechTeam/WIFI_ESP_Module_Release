@@ -3,6 +3,12 @@
 ## Tools
 - Refresh `Tools/Visol_WIFI_Module_FW_Uploader.exe` from firmware repo `tools/gui_updater` (latest GUI build)
 
+## v1.2.10
+- POWRAY A9 status: ID/GroupID (frame Group[2]+ID[2]); current Current1..3 deci-amps (e.g. 418 → 41.8A)
+- ALIVE / RSSI / IP results shown inline under diagnosis buttons
+- Remove SUB_TOPICS button from POWRAY TEST
+- MQTT connected box lists SUB1 Broadcast, SUB2 CMD, SUB3 System, PUB1 System_R, PUB2 Data
+
 ## v1.2.9
 - Fix critical `uart1_j1_rx` stack overflow on POWRAY TEST status (0xA9) when MQTT + SoftAP HTTPS are active
 - Move UART RX large buffers / MQTT pub scratch / protocol parse+TX buffers off the RX task stack (BSS)
