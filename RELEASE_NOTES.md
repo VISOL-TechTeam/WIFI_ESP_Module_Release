@@ -1,5 +1,10 @@
 ﻿> 제품은 POWRAY와 연동합니다. 권장 POWRAY FW: **≥ 1.4.6**. SoftAP 포털·플래시 안내는 [README.md](README.md).
 
+## v1.2.9
+- Fix critical `uart1_j1_rx` stack overflow on POWRAY TEST status (0xA9) when MQTT + SoftAP HTTPS are active
+- Move UART RX large buffers / MQTT pub scratch / protocol parse+TX buffers off the RX task stack (BSS)
+- Defer POWRAY status/hex parsing to `mqtt_pub_task`; increase `uart1_j1_rx` stack 6KB → 8KB
+
 ## v1.2.8
 - SoftAP LAN: MainAP `192.168.100.1/24`, config portal SoftAP `192.168.2.1/24`
 - MQTT MainAP broker example: `mqtt://192.168.100.100`
