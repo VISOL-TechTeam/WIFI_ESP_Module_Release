@@ -1,4 +1,4 @@
-﻿## v1.2.7
+## v1.2.7
 - SoftAP LAN: MainAP `192.168.1.1/24`, config portal SoftAP `192.168.2.1/24`
 - APSTA conflict: if STA owns SoftAP /24, portal moves to `192.168.3.1` (alt)
 - HTTPS SAN updated for new SoftAP IPs; MQTT MainAP broker examples `192.168.1.x`
