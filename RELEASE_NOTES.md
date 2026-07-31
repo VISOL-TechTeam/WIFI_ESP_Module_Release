@@ -8,6 +8,10 @@
 - Shared /static CSS/JS; CFG page BSS 64KB→20KB (~44KB saved)
 - Keep Edit/lock, APIs, auth, /logo.png; captive portal → /
 
+## v1.2.11
+- Fix POWRAY A9 status: frame[2:3] is model (not GroupID); Device ID at [4:5]; GroupID from MQTT config (was showing model e.g. 24 as GroupID)
+- SoftAP HTTPS: single TLS session, shorter handshake timeout; quiet captive-portal CONN_EOF/timeout ERROR spam (HTTP :80 unchanged)
+
 ## v1.2.10
 - POWRAY A9 status: ID/GroupID (frame Group[2]+ID[2]); current Current1..3 deci-amps (e.g. 418 → 41.8A)
 - ALIVE / RSSI / IP results shown inline under diagnosis buttons
