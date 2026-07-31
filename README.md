@@ -9,17 +9,18 @@ VISOL ESP32 WiFi/MQTT 모듈 공개 펌웨어입니다.
 
 - ESP32가 홈 WiFi(STA) 또는 **Main AP SoftAP LAN**으로 네트워크에 붙고 MQTT 브로커와 통신
 - J1 UART(IO25/IO26)로 호스트(POWRAY 등)와 프로토콜 브리지
-- SoftAP 설정 포털(HTTP :80, HTTPS :443 선택)에서 장치·WiFi·MQTT·펌웨어 관리
+- SoftAP 설정 포털(HTTP :80 UI, HTTPS :443→HTTP 리다이렉트)에서 장치·WiFi·MQTT·펌웨어 관리
 
-## SoftAP 포털 주소 (v1.2.8+)
+## SoftAP 포털 주소 (v1.3.0+)
 
 | 모드 | 주소 |
 |------|------|
-| **Main AP** | `http://192.168.100.1` · `https://192.168.100.1` |
-| **일반 SoftAP** | `http://192.168.2.1` · `https://192.168.2.1` |
+| **Main AP** | `http://192.168.100.1` (권장) |
+| **일반 SoftAP** | `http://192.168.2.1` (권장) |
 | APSTA 충돌 회피 | `http://192.168.3.1` (STA가 SoftAP와 같은 /24일 때) |
+| HTTPS :443 | 자체 서명 → 동일 경로 HTTP 302 (UI는 HTTP만) |
 
-HTTPS는 자체 서명 — 브라우저 경고에서 계속 진행. SoftAP 접속 시 비밀번호 없이 설정 가능. STA IP로 열면 SoftAP 비밀번호 로그인(`Unlock Settings`) 필요.
+`https://`로 열면 브라우저 경고가 한 번 뜰 수 있고, 계속하면 HTTP 포털로 이동합니다. SoftAP 접속 시 비밀번호 없이 설정 가능. STA IP로 열면 SoftAP 비밀번호 로그인(`Unlock Settings`) 필요.
 
 Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
@@ -55,6 +56,10 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 | 버전 | 경로 | 요약 |
 |------|------|------|
+| v1.3.0 | [v1.3.0/](v1.3.0/) | SoftAP HTTPS→HTTP 리다이렉트 전용 (포털 UI는 HTTP) |
+| v1.2.12 | [v1.2.12/](v1.2.12/) | SoftAP 포털 탭→페이지 분리, CFG BSS 축소 |
+| v1.2.11 | [v1.2.11/](v1.2.11/) | POWRAY A9 GroupID 오인 수정, HTTPS 프로브 노이즈 억제 |
+| v1.2.10 | [v1.2.10/](v1.2.10/) | POWRAY A9 ID/전류·진단 UI, MQTT 토픽 목록 |
 | v1.2.9 | [v1.2.9/](v1.2.9/) | UART RX 스택 오버플로 수정 (POWRAY A9 + MQTT/HTTPS) |
 | v1.2.8 | [v1.2.8/](v1.2.8/) | MainAP SoftAP `192.168.100.x`, 폴더 기반 GitHub OTA + 인터넷 게이트 |
 | v1.2.7 | [v1.2.7/](v1.2.7/) | SoftAP MainAP `192.168.1.x` / portal `192.168.2.x`, OTA TLS 힙 확보 |
@@ -75,10 +80,10 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 ```bash
 # 공장 설치 (병합 이미지)
-esptool.py -p COMx -b 460800 write_flash 0x0 v1.2.9/ESP_WIFI_MQTT-v1.2.9-factory.bin
+esptool.py -p COMx -b 460800 write_flash 0x0 v1.3.0/ESP_WIFI_MQTT-v1.3.0-factory.bin
 
 # UART OTA (이미 dual-OTA 파티션인 경우)
-python visol_fw_updater.py --file v1.2.9/manifest.json --firmware v1.2.9/ESP_WIFI_MQTT-v1.2.9-app.bin --port COMx
+python visol_fw_updater.py --file v1.3.0/manifest.json --firmware v1.3.0/ESP_WIFI_MQTT-v1.3.0-app.bin --port COMx
 ```
 
 또는 `Tools/Visol_WIFI_Module_FW_Uploader.exe` 사용 (GUI · 폴더 기반 GitHub OTA / 로컬 manifest).
