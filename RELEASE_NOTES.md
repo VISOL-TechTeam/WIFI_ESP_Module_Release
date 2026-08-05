@@ -3,6 +3,12 @@
 ## Tools
 - Refresh `Tools/Visol_WIFI_Module_FW_Uploader.exe` from firmware repo `tools/gui_updater` (latest GUI build)
 
+## v1.3.1
+- SoftAP client join: STA disconnect deferred off the WiFi event handler (esp_timer)
+- SoftAP-up STA reconnect backoff + portal TX power relief
+- Fixes POWERON_RESET / unusable SoftAP portal when STA has no AP (e.g. reason=201) and phone joins SoftAP
+- Prefer `http://192.168.2.1` (portal) / `http://192.168.100.1` (MainAP)
+
 ## v1.3.0
 - SoftAP HTTPS :443 is redirect-only: TLS accept → 302 to `http://<softap-ip>/…` (path/query preserved); no portal HTML on HTTPS
 - SoftAP HTTP :80 still serves the full multipage portal

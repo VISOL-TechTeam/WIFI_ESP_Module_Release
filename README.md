@@ -56,6 +56,7 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 | 버전 | 경로 | 요약 |
 |------|------|------|
+| v1.3.1 | [v1.3.1/](v1.3.1/) | SoftAP 포털 중 STA pause 지연 — POWERON_RESET/설정 불가 수정 |
 | v1.3.0 | [v1.3.0/](v1.3.0/) | SoftAP HTTPS→HTTP 리다이렉트 전용 (포털 UI는 HTTP) |
 | v1.2.12 | [v1.2.12/](v1.2.12/) | SoftAP 포털 탭→페이지 분리, CFG BSS 축소 |
 | v1.2.11 | [v1.2.11/](v1.2.11/) | POWRAY A9 GroupID 오인 수정, HTTPS 프로브 노이즈 억제 |
@@ -80,10 +81,10 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 ```bash
 # 공장 설치 (병합 이미지)
-esptool.py -p COMx -b 460800 write_flash 0x0 v1.3.0/ESP_WIFI_MQTT-v1.3.0-factory.bin
+esptool.py -p COMx -b 460800 write_flash 0x0 v1.3.1/ESP_WIFI_MQTT-v1.3.1-factory.bin
 
 # UART OTA (이미 dual-OTA 파티션인 경우)
-python visol_fw_updater.py --file v1.3.0/manifest.json --firmware v1.3.0/ESP_WIFI_MQTT-v1.3.0-app.bin --port COMx
+python visol_fw_updater.py --file v1.3.1/manifest.json --firmware v1.3.1/ESP_WIFI_MQTT-v1.3.1-app.bin --port COMx
 ```
 
 또는 `Tools/Visol_WIFI_Module_FW_Uploader.exe` 사용 (GUI · 폴더 기반 GitHub OTA / 로컬 manifest).
