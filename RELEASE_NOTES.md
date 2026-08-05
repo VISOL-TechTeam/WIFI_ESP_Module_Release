@@ -5,7 +5,9 @@
 
 ## v1.3.2
 - SoftAP-safe STA nearby AP scan; empty STA SSID = portal-only (no connect loop)
-- SoftAP `/sta` hard fix: tiny `staScan()`/`staTest()` + critical CSS embedded in HTML (no 14KB common+sta inline, no `/static/portal.css` for SoftAP `/sta`) so captive browsers fire `HIT POST /api/wifi/scan`
+- SoftAP `/sta` captive-safe HTML form POST for scan/test (no `<script>` / no `/static` second GET)
+- SoftAP `/sta` UI: portal theme (cards/tabs/buttons), Edit→lock then Save STA, password show/hide when unlocked
+- Config Device ID: boot sync `mqtt_cfg` ← `proto_cfg` when desynced
 - Flash **4MB** — refresh/overwrite of `v1.3.2/` artifacts
 ## v1.3.1
 - SoftAP client join: STA disconnect deferred off the WiFi event handler (esp_timer)

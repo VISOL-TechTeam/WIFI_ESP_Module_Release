@@ -56,7 +56,7 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 | 버전 | 경로 | 요약 |
 |------|------|------|
-| v1.3.2 | [v1.3.2/](v1.3.2/) | SoftAP `/sta` 미니 인라인 Scan/Test + SoftAP-safe 스캔 · **4MB** |
+| v1.3.2 | [v1.3.2/](v1.3.2/) | SoftAP `/sta` 폼 POST + Edit/잠금·포털 테마 · Config ID 동기화 · **4MB** |
 | v1.3.1 | [v1.3.1/](v1.3.1/) | SoftAP 포털 STA pause 지연 + **4MB flash 헤더 수정**(factory 재플래시 필요) |
 | v1.3.0 | [v1.3.0/](v1.3.0/) | SoftAP HTTPS→HTTP 리다이렉트 전용 (포털 UI는 HTTP) |
 | v1.2.12 | [v1.2.12/](v1.2.12/) | SoftAP 포털 탭→페이지 분리, CFG BSS 축소 |
