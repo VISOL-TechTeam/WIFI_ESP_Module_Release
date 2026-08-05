@@ -5,9 +5,8 @@
 
 ## v1.3.2
 - SoftAP-safe STA nearby AP scan; empty STA SSID = portal-only (no connect loop)
-- **Scan zero-reaction fix:** Scan/Test stay clickable without Edit; HIT serial logs; sta.js fallback; HTTP sockets 4; JS `?v=1.3.2a`
+- SoftAP `/sta` one-response inline JS: shrink/minify + `</` escape + 1KB chunks; HTML_BUF 24KB; approx_total under SoftAP budget so Scan/Test fire `HIT POST /api/wifi/scan`
 - Flash **4MB** — refresh/overwrite of `v1.3.2/` artifacts
-
 ## v1.3.1
 - SoftAP client join: STA disconnect deferred off the WiFi event handler (esp_timer)
 - SoftAP-up STA reconnect backoff + portal TX power relief
