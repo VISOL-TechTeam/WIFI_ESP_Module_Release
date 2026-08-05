@@ -8,6 +8,7 @@
 - SoftAP-up STA reconnect backoff + portal TX power relief
 - Fixes POWERON_RESET / unusable SoftAP portal when STA has no AP (e.g. reason=201) and phone joins SoftAP
 - Prefer `http://192.168.2.1` (portal) / `http://192.168.100.1` (MainAP)
+- Rebuild: flash size corrected to **4MB** (image header was wrongly 16MB). Requires **full/factory reflash** — app-only OTA will not fix bootloader/image header mismatch.
 
 ## v1.3.0
 - SoftAP HTTPS :443 is redirect-only: TLS accept → 302 to `http://<softap-ip>/…` (path/query preserved); no portal HTML on HTTPS
