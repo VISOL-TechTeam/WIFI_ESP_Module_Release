@@ -3,6 +3,11 @@
 ## Tools
 - Refresh `Tools/Visol_WIFI_Module_FW_Uploader.exe` from firmware repo `tools/gui_updater` (latest GUI build)
 
+## v1.3.3
+- SoftAP /sta: 잠금 상태에서도 비밀번호 표시(눈 아이콘) 사용 가능
+- 연결 테스트 안정화: MQTT pause / SoftAP disconnect 처리 강화 (POWERON_RESET 감소)
+- Flash **4MB**
+
 ## v1.3.2
 - SoftAP-safe STA nearby AP scan; empty STA SSID = portal-only (no connect loop)
 - SoftAP `/sta` captive-safe HTML form POST for scan/test (no `<script>` / no `/static` second GET)
