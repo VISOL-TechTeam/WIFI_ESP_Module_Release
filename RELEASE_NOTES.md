@@ -3,6 +3,11 @@
 ## Tools
 - Refresh `Tools/Visol_WIFI_Module_FW_Uploader.exe` from firmware repo `tools/gui_updater` (latest GUI build)
 
+## v1.3.2
+- SoftAP-safe STA nearby AP scan; empty STA SSID = portal-only (no connect loop)
+- **Scan zero-reaction fix:** Scan/Test stay clickable without Edit; HIT serial logs; sta.js fallback; HTTP sockets 4; JS `?v=1.3.2a`
+- Flash **4MB** — refresh/overwrite of `v1.3.2/` artifacts
+
 ## v1.3.1
 - SoftAP client join: STA disconnect deferred off the WiFi event handler (esp_timer)
 - SoftAP-up STA reconnect backoff + portal TX power relief
