@@ -5,7 +5,7 @@
 
 ## v1.3.2
 - SoftAP-safe STA nearby AP scan; empty STA SSID = portal-only (no connect loop)
-- SoftAP `/sta` one-response inline JS: shrink/minify + `</` escape + 1KB chunks; HTML_BUF 24KB; approx_total under SoftAP budget so Scan/Test fire `HIT POST /api/wifi/scan`
+- SoftAP `/sta` hard fix: tiny `staScan()`/`staTest()` + critical CSS embedded in HTML (no 14KB common+sta inline, no `/static/portal.css` for SoftAP `/sta`) so captive browsers fire `HIT POST /api/wifi/scan`
 - Flash **4MB** — refresh/overwrite of `v1.3.2/` artifacts
 ## v1.3.1
 - SoftAP client join: STA disconnect deferred off the WiFi event handler (esp_timer)
