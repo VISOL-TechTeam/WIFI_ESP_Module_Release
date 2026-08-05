@@ -1,9 +1,18 @@
-﻿## v1.3.2
-- SoftAP client connected: STA "scan nearby APs" uses SoftAP-safe scan (passive + home channel dwell, non-blocking)
-- During portal scan, SoftAP hold disconnect is deferred; SCAN_DONE race fixed; connecting STA aborted before scan so WIFI_STATE does not block SoftAP portal scan
-- Connect-test sends explicit `application/x-www-form-urlencoded` body; clearer start/result logs
-- **Fix scan zero-reaction:** SoftAP STA page no longer disables Scan/Test/Edit buttons (disabled = silent click, no serial). Scan and connect-test work **without Edit**; empty STA SSID OK
-- UI feedback via status box (captive browsers often block `alert`); sta.js load-fail fallback; JS `?v=1.3.2a`; HTTP portal sockets 4
-- Serial: `HIT POST /api/wifi/scan` on every scan HTTP hit (before auth); `GET /sta softap=` inject log
-- Empty STA SSID: never `esp_wifi_connect()` / retry (SoftAP portal-only)
-- Flash size remains **4MB** — overwrite refresh of v1.3.2 artifacts
+﻿# ESP WIFI MQTT Firmware v1.3.2 (4MB)
+
+## SoftAP portal JS inline (captive fix)
+
+Phone SoftAP/captive browsers often fetch only the HTML (GET /sta) and never issue a second GET for /static/sta.js (same class of failure as logo). Refresh does not help if the browser never requests JS.
+
+**Fix:** SoftAP responses embed common.js + page JS in the same HTTP response (chunked after HTML). Scan/Test handlers work with a single GET. STA-IP access still uses /static/*.js. CFG_PAGE_BUF stays 20KB (HTML only).
+
+Also: SoftAP-safe STA scan, empty-SSID connect block, HIT logs for WiFi APIs and GET /static/*.
+
+## Artifacts
+
+- `ESP_WIFI_MQTT-v1.3.2-app.bin` — OTA @ 0x20000
+- `ESP_WIFI_MQTT-v1.3.2-factory.bin` — full flash @ 0x0 (4MB layout)
+- `bootloader.bin`, `partition-table.bin`, `ota_data_initial.bin`
+- `manifest.json` + `manifest.sig`, `SHA256SUMS.txt`
+
+Flash size: **4MB**. Dual OTA partitions.
