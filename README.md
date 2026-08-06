@@ -61,6 +61,47 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 장치 포털 **FW → Check Latest / Install Latest** 는 릴리스 repo **`main` 루트**의 `vX.Y.Z/` 폴더만 스캔해 최고 semver를 고릅니다. **`dev/` 아래는 탐색하지 않습니다.** STA + 인터넷이 필요합니다.
 
+## manifest.json (OTA 검증 메타데이터)
+
+각 `vX.Y.Z/`(및 `dev/vX.Y.Z/`)에 있는 `manifest.json`은 **앱 바이너리(`*-app.bin`)를 설치하기 전에 검증·다운로드에 쓰는 서명된 메타데이터**입니다.  
+PC UART 업데이터와 장치 GitHub/웹 OTA가 동일한 스키마를 공유합니다. GitHub Release 태그 API는 쓰지 않고, 이 파일 + raw `app.bin` URL로 동작합니다.
+
+### 역할
+
+1. **버전 비교** — `version`으로 현재 펌웨어보다 새지 확인 (웹 OTA는 다운그레이드·동일 버전 재설치 거부)
+2. **무결성** — 다운로드한 `app.bin`의 크기(`app_size`)·SHA-256(`sha256`)이 manifest와 일치해야 설치
+3. **출처 검증** — ECDSA P-256 `signature`를 장치 내장 공개키로 검증 (위·변조 차단)
+4. **다운로드 경로** — `app_url`(또는 동일 폴더 raw URL)로 `*-app.bin` 위치 지정
+
+서명·SHA·크기·target 불일치 시 설치를 거부하고 **기존 OTA 슬롯을 유지**합니다.
+
+### 필드 (`schema`: 1)
+
+| 필드 | 의미 |
+|------|------|
+| `schema` | manifest 스키마 버전 (현재 `1`) |
+| `project` | 프로젝트 ID (`ESP_WIFI_MQTT`) |
+| `target` | 칩 대상 (`esp32`) |
+| `version` | SemVer 문자열 (예: `1.0.0`) |
+| `build_id` | 빌드 식별자 |
+| `channel` | 채널 (예: `stable`) |
+| `app_size` | `*-app.bin` 바이트 크기 (OTA 슬롯 `0x1E0000` 이하) |
+| `sha256` | `*-app.bin`의 SHA-256 hex |
+| `app_url` | 앱 바이너리 HTTPS(raw) URL |
+| `min_updater` | 최소 업데이터 버전 |
+| `created_at` | UTC 생성 시각 (`YYYY-MM-DDTHH:MM:SSZ`) |
+| `signature` | 정규 페이로드에 대한 ECDSA P-256 서명 hex |
+
+서명 대상(정규 문자열):  
+`schema|project|target|version|build_id|app_size|sha256|app_url|channel`
+
+### manifest.sig
+
+같은 폴더의 `manifest.sig`는 `signature`와 **동일한 서명 hex를 담은 사이드카 파일**입니다(릴리스 빌드 시 `--sig-out`으로 생성).  
+장치 OTA 검증은 **`manifest.json` 안의 `signature` 필드**를 기준으로 합니다. `manifest.sig`는 배포·도구 쪽에서 서명을 따로 참조할 때 쓰는 보조 파일입니다.
+
+예: [`v1.0.0/manifest.json`](v1.0.0/manifest.json), [`v1.0.0/manifest.sig`](v1.0.0/manifest.sig)
+
 ## 버전
 
 | 버전 | 경로 | 요약 |
