@@ -11,7 +11,7 @@ VISOL ESP32 WiFi/MQTT 모듈 공개 펌웨어 저장소입니다.
 |------|------|
 | [`v1.0.0/`](v1.0.0/) | **프로덕션 메인라인** (현재 최신). 장치 GitHub OTA가 탐색하는 대상 |
 | [`dev/`](dev/) | 과거 개발선 아카이브 (구 공개 `1.x.x` → `0.x.x`). OTA 「최신」 탐색 **대상 아님** |
-| [`Tools/`](Tools/) | PC GUI 업로더 + 사용설명서 PDF (`Visol_WIFI_Module_FW_Uploader.exe`, 모듈/업로더/프로토콜 매뉴얼) |
+| [`Tools/`](Tools/) | PC GUI 실행 파일 zip + 사용설명서 PDF (`WIFI_Module_V_ESP-executables.zip`, 모듈/업로더/프로토콜 매뉴얼) |
 | [`RELEASE_NOTES.md`](RELEASE_NOTES.md) | 버전 인덱스(요약). 상세는 각 버전 폴더·`dev/` 참고 |
 
 GitHub Release 태그/`/releases/latest`는 사용하지 않습니다. **`main` 브랜치의 루트 `vX.Y.Z/` 폴더**가 버전입니다.
@@ -57,7 +57,7 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 | `ESP_WIFI_MQTT-v*-factory.bin` | 최초/공장 설치 (`esptool` offset `0x0`) |
 | `ESP_WIFI_MQTT-v*-app.bin` | OTA / USB-UART / 포털 수동 업로드 |
 | `manifest.json` (+ `manifest.sig`) | 서명된 OTA 메타데이터 |
-| `Tools/Visol_WIFI_Module_FW_Uploader.exe` | PC GUI 업로더 |
+| [`Tools/WIFI_Module_V_ESP-executables.zip`](Tools/WIFI_Module_V_ESP-executables.zip) | PC GUI 실행 파일 묶음 (업로더 + MQTT 테스트 도구) |
 | [`Tools/VISOL_WIFI_모듈_사용설명서_260806.pdf`](Tools/VISOL_WIFI_모듈_사용설명서_260806.pdf) | WIFI 모듈 사용설명서 (260806) |
 | [`Tools/VISOL_WIFI_펌웨어_업로더_사용설명서_260806.pdf`](Tools/VISOL_WIFI_펌웨어_업로더_사용설명서_260806.pdf) | 펌웨어 업로더 사용설명서 (260806) |
 | [`Tools/WiFi_Module_Protocol_260806.pdf`](Tools/WiFi_Module_Protocol_260806.pdf) | WiFi Module Protocol (260806) |
@@ -128,4 +128,4 @@ esptool.py -p COMx -b 460800 write_flash 0x0 v1.0.0/ESP_WIFI_MQTT-v1.0.0-factory
 python visol_fw_updater.py --file v1.0.0/manifest.json --firmware v1.0.0/ESP_WIFI_MQTT-v1.0.0-app.bin --port COMx
 ```
 
-또는 `Tools/Visol_WIFI_Module_FW_Uploader.exe` 사용 (GUI · 폴더 기반 GitHub OTA / 로컬 manifest).
+또는 [`Tools/WIFI_Module_V_ESP-executables.zip`](Tools/WIFI_Module_V_ESP-executables.zip) 다운로드 후 압축 해제하여 GUI 업로더 사용 (폴더 기반 GitHub OTA / 로컬 manifest).

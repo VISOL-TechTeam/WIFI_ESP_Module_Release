@@ -11,7 +11,7 @@
 
 ## 도구
 
-- `Tools/Visol_WIFI_Module_FW_Uploader.exe` — PC GUI 업로더
+- [`Tools/WIFI_Module_V_ESP-executables.zip`](Tools/WIFI_Module_V_ESP-executables.zip) — PC GUI 실행 파일 묶음 (업로더 + MQTT 테스트 도구)
 
 ## 프로덕션
 
