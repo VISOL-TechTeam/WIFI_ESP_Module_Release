@@ -5,10 +5,10 @@
   "version": "1.0.0",
   "build_id": "1.0.0",
   "channel": "stable",
-  "app_size": 1274336,
-  "sha256": "c0132b38a22f63aa532f59f49b5363f08bb7d86213a51a6a4e2a1888d9786a29",
-  "app_url": "https://github.com/VISOL-TechTeam/WIFI_Module_V_ESP/releases/download/v1.0.0/ESP_WIFI_MQTT-v1.0.0-app.bin",
+  "app_size": 1261776,
+  "sha256": "459e9d0c012b02ced70fb8db3e378e63d5219717cba9992d86cb403160b371e9",
+  "app_url": "https://raw.githubusercontent.com/VISOL-TechTeam/WIFI_ESP_Module_Release/main/v1.0.0/ESP_WIFI_MQTT-v1.0.0-app.bin",
   "min_updater": "1.0.0",
-  "created_at": "2026-07-29T02:07:06Z",
-  "signature": "3045022100be57276d042e40ee451294b22012d45f977a200c32ada7863ed8b6d556bdcc74022041e0cf196299f06ede59c32466e61dde64452af8f5b289efa3dcda3d79c904af"
+  "created_at": "2026-08-06T01:33:34Z",
+  "signature": "3046022100ab88cb065806d8242bf78e04c29aefd6e427ce4e07dffc690f28b1e6b325f160022100f4ae41c1928b240d76bebc5df29351e40dffc37df2f20a5e4f9282c4b9a47722"
 }

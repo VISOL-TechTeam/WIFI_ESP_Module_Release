@@ -1,8 +1,0 @@
-﻿# v1.2.4
-
-- SoftAP portal **POWRAY TEST** tab (same MQTT topics/payloads as WIFI_MQTT_Test_Tool)
-- Controls: Broadcast CONT_ALL, Single CONT_CMD, Status Request (A9)
-- Diagnostics: ALIVE / RSSI / IP / SUB_TOPICS on Devices/Broadcast
-- Shows MQTT connected status; send disabled when disconnected
-- Flash MainAP and client boards with 1.2.4 for portal testing
-

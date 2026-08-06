@@ -1,4 +1,4 @@
-﻿# WIFI ESP Module Release
+# WIFI ESP Module Release
 
 VISOL ESP32 WiFi/MQTT 모듈 공개 펌웨어입니다.  
 **POWRAY** 호스트와 UART·MQTT로 연동하며, SoftAP 웹 포털로 WiFi/MQTT/OTA를 설정합니다.
@@ -56,26 +56,12 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 | 버전 | 경로 | 요약 |
 |------|------|------|
-| v1.3.3 | [v1.3.3/](v1.3.3/) | SoftAP /sta 잠금 시에도 비밀번호 눈 아이콘 · 연결 테스트 안정화 · **4MB** |
-| v1.3.2 | [v1.3.2/](v1.3.2/) | SoftAP `/sta` 폼 POST + Edit/잠금·포털 테마 · Config ID 동기화 · **4MB** |
-| v1.3.1 | [v1.3.1/](v1.3.1/) | SoftAP 포털 STA pause 지연 + **4MB flash 헤더 수정**(factory 재플래시 필요) |
-| v1.3.0 | [v1.3.0/](v1.3.0/) | SoftAP HTTPS→HTTP 리다이렉트 전용 (포털 UI는 HTTP) |
-| v1.2.12 | [v1.2.12/](v1.2.12/) | SoftAP 포털 탭→페이지 분리, CFG BSS 축소 |
-| v1.2.11 | [v1.2.11/](v1.2.11/) | POWRAY A9 GroupID 오인 수정, HTTPS 프로브 노이즈 억제 |
-| v1.2.10 | [v1.2.10/](v1.2.10/) | POWRAY A9 ID/전류·진단 UI, MQTT 토픽 목록 |
-| v1.2.9 | [v1.2.9/](v1.2.9/) | UART RX 스택 오버플로 수정 (POWRAY A9 + MQTT/HTTPS) |
-| v1.2.8 | [v1.2.8/](v1.2.8/) | MainAP SoftAP `192.168.100.x`, 폴더 기반 GitHub OTA + 인터넷 게이트 |
-| v1.2.7 | [v1.2.7/](v1.2.7/) | SoftAP MainAP `192.168.1.x` / portal `192.168.2.x`, OTA TLS 힙 확보 |
-| v1.2.6 | [v1.2.6/](v1.2.6/) | POWRAY UI 정리, A9/MQTT drop 수정 |
-| v1.2.5 | [v1.2.5/](v1.2.5/) | SoftAP HTTPS 안정화, POWRAY TEST UI |
-| v1.2.4 | [v1.2.4/](v1.2.4/) | SoftAP POWRAY TEST 탭 |
-| v1.2.3 | [v1.2.3/](v1.2.3/) | SoftAP HTTPS, APSTA IP 충돌 회피, MainAP L2 forward |
-| v1.2.2 | [v1.2.2/](v1.2.2/) | SoftAP STA↔STA L2 forward |
-| v1.2.1 | [v1.2.1/](v1.2.1/) | SoftAP 로고, About, web upload |
-| v1.2.0 | [v1.2.0/](v1.2.0/) | 설정 UI, Main AP SoftAP LAN/MQTT |
-| v1.1.1 | [v1.1.1/](v1.1.1/) | GitHub OTA 최신버전 탐색 수정 |
-| v1.1.0 | [v1.1.0/](v1.1.0/) | WiFi AP 스캔/연결 테스트 |
-| v1.0.0 | [v1.0.0/](v1.0.0/) | 초기 공개 릴리스 |
+| **v1.0.0** | [v1.0.0/](v1.0.0/) | **프로덕션 메인라인** (구 개발선 1.3.3 리베이스) · SoftAP /sta 잠금 시 비밀번호 눈 아이콘 · 연결 테스트 안정화 · **4MB** |
+| 아카이브 | [dev/](dev/) | 과거 공개 1.x.x → **0.x.x** (`v1.a.b` → `dev/v0.a.b/`). OTA 최신 탐색 대상 아님 |
+
+예시 매핑: `v1.3.3`→`dev/v0.3.3/`, `v1.3.2`→`dev/v0.3.2/`, `v1.2.12`→`dev/v0.2.12/`, 초기 `v1.0.0`→`dev/v0.0.0/` (루트 `v1.0.0/`은 새 프로덕션).
+
+변경 이력:
 
 변경 이력: [RELEASE_NOTES.md](RELEASE_NOTES.md)
 
@@ -83,10 +69,10 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 ```bash
 # 공장 설치 (병합 이미지)
-esptool.py -p COMx -b 460800 write_flash 0x0 v1.3.1/ESP_WIFI_MQTT-v1.3.1-factory.bin
+esptool.py -p COMx -b 460800 write_flash 0x0 v1.0.0/ESP_WIFI_MQTT-v1.0.0-factory.bin
 
 # UART OTA (이미 dual-OTA 파티션인 경우)
-python visol_fw_updater.py --file v1.3.1/manifest.json --firmware v1.3.1/ESP_WIFI_MQTT-v1.3.1-app.bin --port COMx
+python visol_fw_updater.py --file v1.0.0/manifest.json --firmware v1.0.0/ESP_WIFI_MQTT-v1.0.0-app.bin --port COMx
 ```
 
 또는 `Tools/Visol_WIFI_Module_FW_Uploader.exe` 사용 (GUI · 폴더 기반 GitHub OTA / 로컬 manifest).
