@@ -1,26 +1,33 @@
 # ESP_WIFI_MQTT v1.0.0
 
-## Summary
-- First **production** mainline release **1.0.0**.
-- Functionally continues the former development line **v1.3.3** (SoftAP `/sta` password eye when locked; connect-test harden).
-- Historical public **1.x.x** folders were renamed to **0.x.x** and archived under [`dev/`](../dev/).
+## 요약
 
-## Changes (from former 1.3.3)
-- SoftAP `/sta`: password show/hide (eye) available even when the form is locked
-- Connect-test stability: stronger MQTT pause / SoftAP disconnect handling (fewer unexpected POWERON_RESET)
+- 첫 **프로덕션** 메인라인 릴리스 **1.0.0**입니다.
+- 기능적으로는 구 개발선 **v1.3.3**(현재 아카이브 `dev/v0.3.3/`)을 이어받습니다.
+- 과거 공개 **1.x.x** 폴더는 **0.x.x**로 이름을 바꿔 [`dev/`](../dev/)에 보관했습니다.
+
+## 주요 변경 (구 1.3.3 계열 기준)
+
+- SoftAP `/sta`: 폼이 잠긴 상태에서도 비밀번호 표시/숨김(눈 아이콘) 사용 가능
+- 연결 테스트 안정화: MQTT pause / SoftAP disconnect 처리 강화 (예상치 못한 `POWERON_RESET` 감소)
 - Flash **4MB**
 
-## Versioning note
-- Devices using GitHub folder OTA only scan **root** `vX.Y.Z/` directories; archived builds under `dev/` are not selected for "latest".
-- Binary images in `dev/` archives keep their original embedded app version strings (folder/manifest names only were rebased).
+구 개발선에서 이어받은 제품 기능(요약): SoftAP 멀티페이지 포털, Main AP LAN, STA 설정·스캔, MQTT, POWRAY TEST, GitHub 폴더 OTA(루트 `vX.Y.Z/`만), USB-UART OTA(VOTA), 수동 `app.bin` 업로드 등.
 
-## Artifacts
-- `ESP_WIFI_MQTT-v1.0.0-app.bin` — OTA / app partition image
-- `ESP_WIFI_MQTT-v1.0.0-factory.bin` — full flash image
-- `manifest.json` / `manifest.sig` — signed OTA manifest
+## 버전·OTA 안내
+
+- 장치 GitHub OTA는 릴리스 repo **`main` 루트**의 `vX.Y.Z/` 폴더만 스캔합니다. `dev/` 아카이브는 「최신」에 포함되지 않습니다.
+- `dev/` 바이너리 내부 앱 버전 문자열은 원래 빌드값을 유지합니다(폴더/파일명만 0.x로 정리).
+
+## 산출물
+
+- `ESP_WIFI_MQTT-v1.0.0-app.bin` — OTA / 앱 파티션 이미지
+- `ESP_WIFI_MQTT-v1.0.0-factory.bin` — 전체 플래시 이미지
+- `manifest.json` / `manifest.sig` — 서명된 OTA manifest
 - `bootloader.bin`, `partition-table.bin`, `ota_data_initial.bin`
 - `SHA256SUMS.txt`
 
-## Flash
-- App-only OTA from previous 1.3.x is fine for these changes
-- Factory / full reflash: use `ESP_WIFI_MQTT-v1.0.0-factory.bin` (4MB flash)
+## 플래시
+
+- 이전 1.3.x(또는 동등 아카이브 0.3.x)에서 앱만 OTA해도 본 변경에는 충분합니다
+- 공장/전체 재기록: `ESP_WIFI_MQTT-v1.0.0-factory.bin` (4MB 플래시)

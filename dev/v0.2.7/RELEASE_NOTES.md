@@ -1,29 +1,14 @@
-## v0.2.7
-- SoftAP LAN: MainAP `192.168.1.1/24`, config portal SoftAP `192.168.2.1/24`
-- APSTA conflict: if STA owns SoftAP /24, portal moves to `192.168.3.1` (alt)
-- HTTPS SAN updated for new SoftAP IPs; MQTT MainAP broker examples `192.168.1.x`
-- GitHub OTA check/install: temporarily stop MQTT + SoftAP HTTPS to free TLS heap
-- mbedTLS `SSL_IN_CONTENT_LEN=8192`, dynamic free config; clearer `tls_oom` errors
+# ESP_WIFI_MQTT v0.2.7 (아카이브 · 과거 v1.2.7)
 
-## v1.2.6
-- POWRAY TEST UI cleanup (details toggle; hide topics/MAC/hex by default)
-- A9 status parse/display fix; MQTT disconnect on status request fixed (CMD loopback + no binary printf)
-- Compact dimming grid; auto CONT 0% on tab leave / page unload
-- Password show/hide + confirm on SoftAP / STA / MQTT (+ login eye)
-## v1.2.5
-- SoftAP HTTPS stabilization, POWRAY TEST wrap/A9 parse/dim-boost UI
-## v1.2.4
-- SoftAP POWRAY TEST tab (MQTT CONT_ALL/CMD/A9/diagnostics)
-## v1.2.3
-- SoftAP HTTPS :443, APSTA IP conflict fix, MainAP ARP L2 forward, continuous reconnect
+## 주요 변경
 
-## v1.2.2
-- SoftAP STA↔STA L2 forward so ESP clients on MainAP SoftAP can reach PC MQTT broker
+- SoftAP LAN: MainAP `192.168.1.1/24`, 설정 포털 SoftAP `192.168.2.1/24`
+- APSTA 충돌: STA가 SoftAP /24를 쓰면 포털을 `192.168.3.1`로 이동
+- HTTPS SAN·MQTT MainAP 브로커 예시를 새 SoftAP IP에 맞춤
+- GitHub OTA 확인/설치 전 MQTT + SoftAP HTTPS를 잠시 중지해 TLS 힙 확보
+- mbedTLS `SSL_IN_CONTENT_LEN=8192`, dynamic free, `tls_oom` 오류 메시지 개선
 
-## v1.2.1
-- SoftAP logo inline, About Visol Inc, web app.bin upload, Check Latest crash fix
-
-## Archive note (2026-08-06)
-- Renamed from **v1.2.7** → **v0.2.7** and moved under `dev/` as part of the production 1.0.0 rebaseline.
-- Artifact filenames and text manifests were updated to `v0.2.7`; binary image internal version strings remain the original `1.2.7` (no rebuild).
-- `manifest.json` version/URL fields were rewritten for archive layout; the embedded `signature` / `manifest.sig` may no longer verify against the rewritten JSON (archive only — not used for production OTA).
+## 아카이브 안내 (2026-08-06)
+- 과거 공개 버전 **v1.2.7** → **v0.2.7**로 폴더명을 바꾸고 `dev/`로 이동했습니다 (프로덕션 1.0.0 리베이스).
+- 파일명·텍스트 manifest는 `v0.2.7` 기준으로 정리됐을 수 있으나, 바이너리 내부 버전 문자열은 원래 빌드값(예: `1.2.7`)을 유지합니다(재빌드 없음).
+- 아카이브용으로 고친 `manifest.json`의 서명/`manifest.sig`는 검증이 실패할 수 있습니다. 프로덕션 OTA 최신 탐색 대상이 아닙니다.

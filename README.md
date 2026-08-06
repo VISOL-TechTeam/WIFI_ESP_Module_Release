@@ -1,9 +1,20 @@
 # WIFI ESP Module Release
 
-VISOL ESP32 WiFi/MQTT 모듈 공개 펌웨어입니다.  
+VISOL ESP32 WiFi/MQTT 모듈 공개 펌웨어 저장소입니다.
 **POWRAY** 호스트와 UART·MQTT로 연동하며, SoftAP 웹 포털로 WiFi/MQTT/OTA를 설정합니다.
 
 > 권장 POWRAY 펌웨어: **1.4.6 이상**
+
+## 저장소 구조
+
+| 경로 | 역할 |
+|------|------|
+| [`v1.0.0/`](v1.0.0/) | **프로덕션 메인라인** (현재 최신). 장치 GitHub OTA가 탐색하는 대상 |
+| [`dev/`](dev/) | 과거 개발선 아카이브 (구 공개 `1.x.x` → `0.x.x`). OTA 「최신」 탐색 **대상 아님** |
+| [`Tools/`](Tools/) | PC GUI 업로더 (`Visol_WIFI_Module_FW_Uploader.exe`) |
+| [`RELEASE_NOTES.md`](RELEASE_NOTES.md) | 버전 인덱스(요약). 상세는 각 버전 폴더·`dev/` 참고 |
+
+GitHub Release 태그/`/releases/latest`는 사용하지 않습니다. **`main` 브랜치의 루트 `vX.Y.Z/` 폴더**가 버전입니다.
 
 ## 제품 역할
 
@@ -11,7 +22,7 @@ VISOL ESP32 WiFi/MQTT 모듈 공개 펌웨어입니다.
 - J1 UART(IO25/IO26)로 호스트(POWRAY 등)와 프로토콜 브리지
 - SoftAP 설정 포털(HTTP :80 UI, HTTPS :443→HTTP 리다이렉트)에서 장치·WiFi·MQTT·펌웨어 관리
 
-## SoftAP 포털 주소 (v1.3.0+)
+## SoftAP 포털 주소 (현재 프로덕션 기준)
 
 | 모드 | 주소 |
 |------|------|
@@ -38,32 +49,30 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 ## 최신 펌웨어 받기
 
-이 저장소 **main**의 `vX.Y.Z/` 폴더가 버전입니다 (GitHub Release 태그 미사용).
-
-1. 아래 버전 표에서 최신 `vX.Y.Z` 폴더로 이동  
+1. [`v1.0.0/`](v1.0.0/) 로 이동 (현재 프로덕션)
 2. 용도에 맞는 파일 다운로드:
 
 | 파일 | 용도 |
 |------|------|
 | `ESP_WIFI_MQTT-v*-factory.bin` | 최초/공장 설치 (`esptool` offset `0x0`) |
-| `ESP_WIFI_MQTT-v*-app.bin` | OTA / UART / 포털 수동 업로드 |
+| `ESP_WIFI_MQTT-v*-app.bin` | OTA / USB-UART / 포털 수동 업로드 |
 | `manifest.json` (+ `manifest.sig`) | 서명된 OTA 메타데이터 |
-| `Tools/Visol_WIFI_Module_FW_Uploader.exe` | PC GUI 업로더 (최신 GUI 빌드) |
+| `Tools/Visol_WIFI_Module_FW_Uploader.exe` | PC GUI 업로더 |
 
-장치 포털 **FW → Check Latest / Install Latest** 도 같은 `vX.Y.Z/` 폴더에서 최고 semver를 고릅니다. STA + 인터넷 필요.
+장치 포털 **FW → Check Latest / Install Latest** 는 릴리스 repo **`main` 루트**의 `vX.Y.Z/` 폴더만 스캔해 최고 semver를 고릅니다. **`dev/` 아래는 탐색하지 않습니다.** STA + 인터넷이 필요합니다.
 
 ## 버전
 
 | 버전 | 경로 | 요약 |
 |------|------|------|
-| **v1.0.0** | [v1.0.0/](v1.0.0/) | **프로덕션 메인라인** (구 개발선 1.3.3 리베이스) · SoftAP /sta 잠금 시 비밀번호 눈 아이콘 · 연결 테스트 안정화 · **4MB** |
-| 아카이브 | [dev/](dev/) | 과거 공개 1.x.x → **0.x.x** (`v1.a.b` → `dev/v0.a.b/`). OTA 최신 탐색 대상 아님 |
+| **v1.0.0** | [v1.0.0/](v1.0.0/) | **프로덕션 메인라인** (구 개발선 1.3.3 기능 리베이스) · SoftAP `/sta` 잠금 시 비밀번호 눈 아이콘 · 연결 테스트 안정화 · **4MB** |
+| 아카이브 | [dev/](dev/) | 과거 공개 `1.x.x` → `0.x.x` (`v1.a.b` → `dev/v0.a.b/`). 프로덕션 OTA 최신 아님 |
 
-예시 매핑: `v1.3.3`→`dev/v0.3.3/`, `v1.3.2`→`dev/v0.3.2/`, `v1.2.12`→`dev/v0.2.12/`, 초기 `v1.0.0`→`dev/v0.0.0/` (루트 `v1.0.0/`은 새 프로덕션).
+예시 매핑: `v1.3.3`→`dev/v0.3.3/`, `v1.3.2`→`dev/v0.3.2/`, `v1.2.12`→`dev/v0.2.12/`, 초기 공개 `v1.0.0`→`dev/v0.0.0/` (루트 `v1.0.0/`은 새 프로덕션).
 
-변경 이력:
-
-변경 이력: [RELEASE_NOTES.md](RELEASE_NOTES.md)
+- 프로덕션 노트: [v1.0.0/RELEASE_NOTES.md](v1.0.0/RELEASE_NOTES.md)
+- 인덱스: [RELEASE_NOTES.md](RELEASE_NOTES.md)
+- 아카이브 설명·이력: [dev/README.md](dev/README.md), [dev/CHANGELOG.md](dev/CHANGELOG.md)
 
 ## 플래시
 
@@ -71,7 +80,7 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 # 공장 설치 (병합 이미지)
 esptool.py -p COMx -b 460800 write_flash 0x0 v1.0.0/ESP_WIFI_MQTT-v1.0.0-factory.bin
 
-# UART OTA (이미 dual-OTA 파티션인 경우)
+# USB-UART OTA (이미 dual-OTA 파티션인 경우)
 python visol_fw_updater.py --file v1.0.0/manifest.json --firmware v1.0.0/ESP_WIFI_MQTT-v1.0.0-app.bin --port COMx
 ```
 

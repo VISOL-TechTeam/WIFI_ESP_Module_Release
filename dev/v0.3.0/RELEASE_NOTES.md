@@ -1,10 +1,13 @@
-## v0.3.0
-- SoftAP HTTPS :443 is redirect-only: TLS accept → 302 to `http://<softap-ip>/…` (path/query preserved); no portal HTML on HTTPS
-- SoftAP HTTP :80 still serves the full multipage portal
-- Prefer `http://192.168.100.1` (MainAP) / `http://192.168.2.1`; self-signed warning may appear once on https before redirect
-- If heap is too low for TLS redirect, :443 is skipped; HTTP portal remains available
+# ESP_WIFI_MQTT v0.3.0 (아카이브 · 과거 v1.3.0)
 
-## Archive note (2026-08-06)
-- Renamed from **v1.3.0** → **v0.3.0** and moved under `dev/` as part of the production 1.0.0 rebaseline.
-- Artifact filenames and text manifests were updated to `v0.3.0`; binary image internal version strings remain the original `1.3.0` (no rebuild).
-- `manifest.json` version/URL fields were rewritten for archive layout; the embedded `signature` / `manifest.sig` may no longer verify against the rewritten JSON (archive only — not used for production OTA).
+## 주요 변경
+
+- SoftAP HTTPS :443는 리다이렉트 전용: TLS 수락 후 `http://<softap-ip>/…` 로 302 (path/query 유지), HTTPS에서는 포털 HTML 없음
+- SoftAP HTTP :80은 기존처럼 전체 멀티페이지 포털 제공
+- 권장: `http://192.168.100.1` (MainAP) / `http://192.168.2.1`
+- TLS 리다이렉트용 힙이 부족하면 :443을 건너뛰고 HTTP 포털만 유지
+
+## 아카이브 안내 (2026-08-06)
+- 과거 공개 버전 **v1.3.0** → **v0.3.0**로 폴더명을 바꾸고 `dev/`로 이동했습니다 (프로덕션 1.0.0 리베이스).
+- 파일명·텍스트 manifest는 `v0.3.0` 기준으로 정리됐을 수 있으나, 바이너리 내부 버전 문자열은 원래 빌드값(예: `1.3.0`)을 유지합니다(재빌드 없음).
+- 아카이브용으로 고친 `manifest.json`의 서명/`manifest.sig`는 검증이 실패할 수 있습니다. 프로덕션 OTA 최신 탐색 대상이 아닙니다.

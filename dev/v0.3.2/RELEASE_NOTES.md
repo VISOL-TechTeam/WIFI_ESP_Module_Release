@@ -1,82 +1,14 @@
-> 제품은 POWRAY와 연동합니다. 권장 POWRAY FW: **≥ 1.4.6**. SoftAP 포털·플래시 안내는 [README.md](README.md).
+# ESP_WIFI_MQTT v0.3.2 (아카이브 · 과거 v1.3.2)
 
-## Tools
-- Refresh `Tools/Visol_WIFI_Module_FW_Uploader.exe` from firmware repo `tools/gui_updater` (latest GUI build)
+## 주요 변경
 
-## v0.3.2
-- SoftAP-safe STA nearby AP scan; empty STA SSID = portal-only (no connect loop)
-- SoftAP `/sta` captive-safe HTML form POST for scan/test (no `<script>` / no `/static` second GET)
-- SoftAP `/sta` UI: portal theme (cards/tabs/buttons), Edit→lock then Save STA, password show/hide when unlocked
-- Config Device ID: boot sync `mqtt_cfg` ← `proto_cfg` when desynced
-- Flash **4MB** — refresh/overwrite of `v0.3.2/` artifacts
-## v1.3.1
-- SoftAP client join: STA disconnect deferred off the WiFi event handler (esp_timer)
-- SoftAP-up STA reconnect backoff + portal TX power relief
-- Fixes POWERON_RESET / unusable SoftAP portal when STA has no AP (e.g. reason=201) and phone joins SoftAP
-- Prefer `http://192.168.2.1` (portal) / `http://192.168.100.1` (MainAP)
-- Rebuild: flash size corrected to **4MB** (image header was wrongly 16MB). Requires **full/factory reflash** — app-only OTA will not fix bootloader/image header mismatch.
+- SoftAP에서도 안전한 주변 STA AP 스캔, STA SSID가 비어 있으면 포털 전용(연결 루프 없음)
+- SoftAP `/sta`: captive-safe HTML form POST로 스캔/테스트 (`<script>` / `/static` 추가 GET 없음)
+- SoftAP `/sta` UI: 포털 테마, Edit→잠금 후 Save STA, 잠금 해제 시 비밀번호 표시/숨김
+- Config Device ID: 부팅 시 `mqtt_cfg` ↔ `proto_cfg` 불일치면 동기화
+- Flash **4MB**
 
-## v1.3.0
-- SoftAP HTTPS :443 is redirect-only: TLS accept → 302 to `http://<softap-ip>/…` (path/query preserved); no portal HTML on HTTPS
-- SoftAP HTTP :80 still serves the full multipage portal
-- Prefer `http://192.168.100.1` (MainAP) / `http://192.168.2.1`; self-signed warning may appear once on https before redirect
-- If heap is too low for TLS redirect, :443 is skipped; HTTP portal remains available
-
-## v1.2.12
-- SoftAP config portal: split tabs into pages (/config /softap /sta /mqtt /powray /fw /about)
-- Shared /static CSS/JS; CFG page BSS 64KB→20KB (~44KB saved)
-- Keep Edit/lock, APIs, auth, /logo.png; captive portal → /
-
-## v1.2.11
-- Fix POWRAY A9 status: frame[2:3] is model (not GroupID); Device ID at [4:5]; GroupID from MQTT config (was showing model e.g. 24 as GroupID)
-- SoftAP HTTPS: single TLS session, shorter handshake timeout; quiet captive-portal CONN_EOF/timeout ERROR spam (HTTP :80 unchanged)
-
-## v1.2.10
-- POWRAY A9 status: ID/GroupID (frame Group[2]+ID[2]); current Current1..3 deci-amps (e.g. 418 → 41.8A)
-- ALIVE / RSSI / IP results shown inline under diagnosis buttons
-- Remove SUB_TOPICS button from POWRAY TEST
-- MQTT connected box lists SUB1 Broadcast, SUB2 CMD, SUB3 System, PUB1 System_R, PUB2 Data
-
-## v1.2.9
-- Fix critical `uart1_j1_rx` stack overflow on POWRAY TEST status (0xA9) when MQTT + SoftAP HTTPS are active
-- Move UART RX large buffers / MQTT pub scratch / protocol parse+TX buffers off the RX task stack (BSS)
-- Defer POWRAY status/hex parsing to `mqtt_pub_task`; increase `uart1_j1_rx` stack 6KB → 8KB
-
-## v1.2.8
-- SoftAP LAN: MainAP `192.168.100.1/24`, config portal SoftAP `192.168.2.1/24`
-- MQTT MainAP broker example: `mqtt://192.168.100.100`
-- APSTA conflict: if STA owns SoftAP /24, portal moves to `192.168.3.1` (alt; not 100.x)
-- Password confirm: SoftAP settings only (removed from STA / MQTT; show/hide eye kept)
-- GitHub OTA: discover highest semver `vX.Y.Z/` folder on release repo `main` (no Release tags / `/releases/latest`)
-- Keep MQTT + SoftAP HTTPS pause during OTA check/install for TLS heap
-- HTTPS SAN updated for `192.168.100.1` / `.2.1` / `.3.1`
-
-## v1.2.7
-- SoftAP LAN: MainAP `192.168.1.1/24`, config portal SoftAP `192.168.2.1/24`
-- APSTA conflict: if STA owns SoftAP /24, portal moves to `192.168.3.1` (alt)
-- HTTPS SAN updated for new SoftAP IPs; MQTT MainAP broker examples `192.168.1.x`
-- GitHub OTA check/install: temporarily stop MQTT + SoftAP HTTPS to free TLS heap
-- mbedTLS `SSL_IN_CONTENT_LEN=8192`, dynamic free config; clearer `tls_oom` errors
-
-## v1.2.6
-- POWRAY TEST UI cleanup (details toggle; hide topics/MAC/hex by default)
-- A9 status parse/display fix; MQTT disconnect on status request fixed (CMD loopback + no binary printf)
-- Compact dimming grid; auto CONT 0% on tab leave / page unload
-- Password show/hide + confirm on SoftAP / STA / MQTT (+ login eye)
-## v1.2.5
-- SoftAP HTTPS stabilization, POWRAY TEST wrap/A9 parse/dim-boost UI
-## v1.2.4
-- SoftAP POWRAY TEST tab (MQTT CONT_ALL/CMD/A9/diagnostics)
-## v1.2.3
-- SoftAP HTTPS :443, APSTA IP conflict fix, MainAP ARP L2 forward, continuous reconnect
-
-## v1.2.2
-- SoftAP STA↔STA L2 forward so ESP clients on MainAP SoftAP can reach PC MQTT broker
-
-## v1.2.1
-- SoftAP logo inline, About Visol Inc, web app.bin upload, Check Latest crash fix
-
-## Archive note (2026-08-06)
-- Renamed from **v1.3.2** → **v0.3.2** and moved under `dev/` as part of the production 1.0.0 rebaseline.
-- Artifact filenames and text manifests were updated to `v0.3.2`; binary image internal version strings remain the original `1.3.2` (no rebuild).
-- `manifest.json` version/URL fields were rewritten for archive layout; the embedded `signature` / `manifest.sig` may no longer verify against the rewritten JSON (archive only — not used for production OTA).
+## 아카이브 안내 (2026-08-06)
+- 과거 공개 버전 **v1.3.2** → **v0.3.2**로 폴더명을 바꾸고 `dev/`로 이동했습니다 (프로덕션 1.0.0 리베이스).
+- 파일명·텍스트 manifest는 `v0.3.2` 기준으로 정리됐을 수 있으나, 바이너리 내부 버전 문자열은 원래 빌드값(예: `1.3.2`)을 유지합니다(재빌드 없음).
+- 아카이브용으로 고친 `manifest.json`의 서명/`manifest.sig`는 검증이 실패할 수 있습니다. 프로덕션 OTA 최신 탐색 대상이 아닙니다.

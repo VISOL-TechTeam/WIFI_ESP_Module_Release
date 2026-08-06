@@ -1,13 +1,14 @@
-# v0.2.3
+# ESP_WIFI_MQTT v0.2.3 (아카이브 · 과거 v1.2.3)
 
-- SoftAP HTTPS :443 restored (self-signed ECDSA; SAN 192.168.4.1 / 192.168.5.1 / visol.local)
-- Fix client APSTA SoftAP/STA same-subnet conflict (portal moves to 192.168.5.1 when STA on 192.168.4.0/24)
-- MainAP L2 forward: ARP/BC flood + unicast STA-to-STA (Main AP only)
-- Bind MQTT sockets to STA netif on client boards
-- Remove WiFi/MQTT retry count from Config UI and firmware (continuous reconnect)
-- Flash both MainAP and client ESP with 1.2.3 for STA-to-STA MQTT to PC broker
+## 주요 변경
 
-## Archive note (2026-08-06)
-- Renamed from **v1.2.3** → **v0.2.3** and moved under `dev/` as part of the production 1.0.0 rebaseline.
-- Artifact filenames and text manifests were updated to `v0.2.3`; binary image internal version strings remain the original `1.2.3` (no rebuild).
-- `manifest.json` version/URL fields were rewritten for archive layout; the embedded `signature` / `manifest.sig` may no longer verify against the rewritten JSON (archive only — not used for production OTA).
+- SoftAP HTTPS :443 복구(자체 서명 ECDSA; SAN 당시 192.168.4.1 / 192.168.5.1 / visol.local)
+- 클라이언트 APSTA에서 SoftAP/STA 동일 서브넷 충돌 시 포털을 대체 IP로 이동
+- MainAP L2 포워드: ARP/브로드캐스트 + 유니캐스트 STA-to-STA (Main AP만)
+- 클라이언트 보드에서 MQTT 소켓을 STA netif에 바인딩
+- Config UI·펌웨어의 WiFi/MQTT 재시도 횟수 제거(연속 재연결)
+
+## 아카이브 안내 (2026-08-06)
+- 과거 공개 버전 **v1.2.3** → **v0.2.3**로 폴더명을 바꾸고 `dev/`로 이동했습니다 (프로덕션 1.0.0 리베이스).
+- 파일명·텍스트 manifest는 `v0.2.3` 기준으로 정리됐을 수 있으나, 바이너리 내부 버전 문자열은 원래 빌드값(예: `1.2.3`)을 유지합니다(재빌드 없음).
+- 아카이브용으로 고친 `manifest.json`의 서명/`manifest.sig`는 검증이 실패할 수 있습니다. 프로덕션 OTA 최신 탐색 대상이 아닙니다.

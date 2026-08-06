@@ -1,22 +1,13 @@
-## v0.2.6
-- POWRAY TEST UI cleanup (details toggle; hide topics/MAC/hex by default)
-- A9 status parse/display fix; MQTT disconnect on status request fixed (CMD loopback + no binary printf)
-- Compact dimming grid; auto CONT 0% on tab leave / page unload
-- Password show/hide + confirm on SoftAP / STA / MQTT (+ login eye)
-## v1.2.5
-- SoftAP HTTPS stabilization, POWRAY TEST wrap/A9 parse/dim-boost UI
-## v1.2.4
-- SoftAP POWRAY TEST tab (MQTT CONT_ALL/CMD/A9/diagnostics)
-## v1.2.3
-- SoftAP HTTPS :443, APSTA IP conflict fix, MainAP ARP L2 forward, continuous reconnect
+# ESP_WIFI_MQTT v0.2.6 (아카이브 · 과거 v1.2.6)
 
-## v1.2.2
-- SoftAP STA↔STA L2 forward so ESP clients on MainAP SoftAP can reach PC MQTT broker
+## 주요 변경
 
-## v1.2.1
-- SoftAP logo inline, About Visol Inc, web app.bin upload, Check Latest crash fix
+- POWRAY TEST UI 정리(상세 토글; 토픽/MAC/hex 기본 숨김)
+- A9 상태 파싱·표시 수정, 상태 요청 시 MQTT 끊김 수정(CMD 루프백·바이너리 printf 제거)
+- 디밍 그리드 축소, 탭 이탈/페이지 unload 시 CONT 0% 자동
+- SoftAP / STA / MQTT(+로그인) 비밀번호 표시/숨김 및 확인
 
-## Archive note (2026-08-06)
-- Renamed from **v1.2.6** → **v0.2.6** and moved under `dev/` as part of the production 1.0.0 rebaseline.
-- Artifact filenames and text manifests were updated to `v0.2.6`; binary image internal version strings remain the original `1.2.6` (no rebuild).
-- `manifest.json` version/URL fields were rewritten for archive layout; the embedded `signature` / `manifest.sig` may no longer verify against the rewritten JSON (archive only — not used for production OTA).
+## 아카이브 안내 (2026-08-06)
+- 과거 공개 버전 **v1.2.6** → **v0.2.6**로 폴더명을 바꾸고 `dev/`로 이동했습니다 (프로덕션 1.0.0 리베이스).
+- 파일명·텍스트 manifest는 `v0.2.6` 기준으로 정리됐을 수 있으나, 바이너리 내부 버전 문자열은 원래 빌드값(예: `1.2.6`)을 유지합니다(재빌드 없음).
+- 아카이브용으로 고친 `manifest.json`의 서명/`manifest.sig`는 검증이 실패할 수 있습니다. 프로덕션 OTA 최신 탐색 대상이 아닙니다.
