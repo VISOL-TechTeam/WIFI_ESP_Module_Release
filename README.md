@@ -58,9 +58,9 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 | `ESP_WIFI_MQTT-v*-app.bin` | OTA / USB-UART / 포털 수동 업로드 |
 | `manifest.json` (+ `manifest.sig`) | 서명된 OTA 메타데이터 |
 | [`Tools/WIFI_Module_V_ESP-executables.zip`](Tools/WIFI_Module_V_ESP-executables.zip) | PC GUI 실행 파일 묶음 (업로더 + MQTT 테스트 도구) |
-| [`Tools/VISOL_WIFI_모듈_사용설명서_260806.pdf`](Tools/VISOL_WIFI_모듈_사용설명서_260806.pdf) | WIFI 모듈 사용설명서 (260806) |
-| [`Tools/VISOL_WIFI_펌웨어_업로더_사용설명서_260806.pdf`](Tools/VISOL_WIFI_펌웨어_업로더_사용설명서_260806.pdf) | 펌웨어 업로더 사용설명서 (260806) |
-| [`Tools/WiFi_Module_Protocol_260806.pdf`](Tools/WiFi_Module_Protocol_260806.pdf) | WiFi Module Protocol (260806) |
+| [`Manual/VISOL_WIFI_모듈_사용설명서_260806.pdf`](Manual/VISOL_WIFI_모듈_사용설명서_260806.pdf) | WIFI 모듈 사용설명서 (260806) |
+| [`Manual/VISOL_WIFI_펌웨어_업로더_사용설명서_260806.pdf`](Manual/VISOL_WIFI_펌웨어_업로더_사용설명서_260806.pdf) | 펌웨어 업로더 사용설명서 (260806) |
+| [`Manual/WiFi_Module_Protocol_260806.pdf`](Manual/WiFi_Module_Protocol_260806.pdf) | WiFi Module Protocol (260806) |
 
 장치 포털 **FW → Check Latest / Install Latest** 는 릴리스 repo **`main` 루트**의 `vX.Y.Z/` 폴더만 스캔해 최고 semver를 고릅니다. **`dev/` 아래는 탐색하지 않습니다.** STA + 인터넷이 필요합니다.
 
