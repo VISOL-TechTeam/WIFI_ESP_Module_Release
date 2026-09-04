@@ -9,12 +9,14 @@ VISOL ESP32 WiFi/MQTT 모듈 공개 펌웨어 저장소입니다.
 
 | 경로 | 역할 |
 |------|------|
-| [`v1.0.0/`](v1.0.0/) | **프로덕션 메인라인** (현재 최신). 장치 GitHub OTA가 탐색하는 대상 |
+| [`v1.0.1/`](v1.0.1/) | **프로덕션 메인라인** (현재 최신). 장치 GitHub OTA가 탐색하는 대상 |
+| [`v1.0.0/`](v1.0.0/) | 이전 프로덕션 |
 | [`dev/`](dev/) | 과거 개발선 아카이브 (구 공개 `1.x.x` → `0.x.x`). OTA 「최신」 탐색 **대상 아님** |
 | [`Tools/`](Tools/) | PC GUI 실행 파일 zip + 사용설명서 PDF (`WIFI_Module_V_ESP-executables.zip`, 모듈/업로더/프로토콜 매뉴얼) |
 | [`RELEASE_NOTES.md`](RELEASE_NOTES.md) | 버전 인덱스(요약). 상세는 각 버전 폴더·`dev/` 참고 |
 
-GitHub Release 태그/`/releases/latest`는 사용하지 않습니다. **`main` 브랜치의 루트 `vX.Y.Z/` 폴더**가 버전입니다.
+**`main` 브랜치의 루트 `vX.Y.Z/` 폴더**가 장치 OTA 버전입니다.  
+PC 업로더(「GitHub에서 버전 선택」)는 같은 파일을 **GitHub Release 자산**으로도 받습니다 (`/releases/latest/download/manifest.json`). 폴더만 올리고 Release를 만들지 않으면 업로더가 “파일이 없다(404)”고 실패합니다.
 
 ## 제품 역할
 
@@ -49,7 +51,7 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 
 ## 최신 펌웨어 받기
 
-1. [`v1.0.0/`](v1.0.0/) 로 이동 (현재 프로덕션)
+1. [`v1.0.1/`](v1.0.1/) 로 이동 (현재 프로덕션) 또는 [Releases](https://github.com/VISOL-TechTeam/WIFI_ESP_Module_Release/releases)
 2. 용도에 맞는 파일 다운로드:
 
 | 파일 | 용도 |
@@ -67,7 +69,7 @@ Main AP 시 MQTT 브로커 예: `mqtt://192.168.100.100` (SoftAP에 붙은 PC).
 ## manifest.json (OTA 검증 메타데이터)
 
 각 `vX.Y.Z/`(및 `dev/vX.Y.Z/`)에 있는 `manifest.json`은 **앱 바이너리(`*-app.bin`)를 설치하기 전에 검증·다운로드에 쓰는 서명된 메타데이터**입니다.  
-PC UART 업데이터와 장치 GitHub/웹 OTA가 동일한 스키마를 공유합니다. GitHub Release 태그 API는 쓰지 않고, 이 파일 + raw `app.bin` URL로 동작합니다.
+PC UART 업데이터와 장치 GitHub/웹 OTA가 동일한 스키마를 공유합니다. 장치는 폴더 raw URL, PC 업로더는 GitHub Release 자산(`/releases/latest/download/`)과 폴더 경로를 함께 사용합니다.
 
 ### 역할
 
@@ -109,12 +111,13 @@ PC UART 업데이터와 장치 GitHub/웹 OTA가 동일한 스키마를 공유�
 
 | 버전 | 경로 | 요약 |
 |------|------|------|
-| **v1.0.0** | [v1.0.0/](v1.0.0/) | **프로덕션 메인라인** (구 개발선 1.3.3 기능 리베이스) · SoftAP `/sta` 잠금 시 비밀번호 눈 아이콘 · 연결 테스트 안정화 · **4MB** |
+| **v1.0.1** | [v1.0.1/](v1.0.1/) | **프로덕션 최신** · ID 동기화 개선 · [GitHub Release](https://github.com/VISOL-TechTeam/WIFI_ESP_Module_Release/releases/tag/v1.0.1) |
+| v1.0.0 | [v1.0.0/](v1.0.0/) | 이전 프로덕션 (구 개발선 1.3.3 기능 리베이스) · SoftAP `/sta` 잠금 시 비밀번호 눈 아이콘 · 연결 테스트 안정화 · **4MB** |
 | 아카이브 | [dev/](dev/) | 과거 공개 `1.x.x` → `0.x.x` (`v1.a.b` → `dev/v0.a.b/`). 프로덕션 OTA 최신 아님 |
 
 예시 매핑: `v1.3.3`→`dev/v0.3.3/`, `v1.3.2`→`dev/v0.3.2/`, `v1.2.12`→`dev/v0.2.12/`, 초기 공개 `v1.0.0`→`dev/v0.0.0/` (루트 `v1.0.0/`은 새 프로덕션).
 
-- 프로덕션 노트: [v1.0.0/RELEASE_NOTES.md](v1.0.0/RELEASE_NOTES.md)
+- 프로덕션 노트: [v1.0.1/RELEASE_NOTES.md](v1.0.1/RELEASE_NOTES.md), [v1.0.0/RELEASE_NOTES.md](v1.0.0/RELEASE_NOTES.md)
 - 인덱스: [RELEASE_NOTES.md](RELEASE_NOTES.md)
 - 아카이브 설명·이력: [dev/README.md](dev/README.md), [dev/CHANGELOG.md](dev/CHANGELOG.md)
 
