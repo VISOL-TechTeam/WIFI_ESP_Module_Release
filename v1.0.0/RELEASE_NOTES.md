@@ -6,6 +6,12 @@
 - 기능적으로는 구 개발선 **v1.3.3**(현재 아카이브 `dev/v0.3.3/`)을 이어받습니다.
 - 과거 공개 **1.x.x** 폴더는 **0.x.x**로 이름을 바꿔 [`dev/`](../dev/)에 보관했습니다.
 
+## 빌드 갱신 (2026-09-04)
+
+- **ID 동기화 개선**: POWRAY ↔ WIFI Device ID 동기화 경로 보강
+- Device ID 변경 시 MQTT 토픽 재구성(`mqtt_refresh_topics_after_device_id_change`)
+- 동일 버전(`1.0.0`) 바이너리·manifest 교체 — 이미 1.0.0인 장치는 GitHub OTA 「최신」으로 잡히지 않으므로 **수동 업로드 / UART OTA / factory 재플래시**로 적용
+
 ## 주요 변경 (구 1.3.3 계열 기준)
 
 - SoftAP `/sta`: 폼이 잠긴 상태에서도 비밀번호 표시/숨김(눈 아이콘) 사용 가능

@@ -19,7 +19,7 @@
 |------|------|
 | **v1.0.0** | [v1.0.0/RELEASE_NOTES.md](v1.0.0/RELEASE_NOTES.md) |
 
-요약: SoftAP `/sta` 잠금 상태에서도 비밀번호 표시(눈 아이콘), 연결 테스트 안정화(MQTT pause / SoftAP disconnect), Flash **4MB**. 구 개발선 1.3.3과 기능적으로 동일 계열입니다.
+요약: SoftAP `/sta` 잠금 상태에서도 비밀번호 표시(눈 아이콘), 연결 테스트 안정화, Flash **4MB**. 2026-09-04 빌드: **ID 동기화 개선**(동일 버전 바이너리 교체 — 기배포 1.0.0은 수동/UART/factory로 적용).
 
 ## 아카이브 (`dev/`)
 
